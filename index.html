@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preetish K. Mishra — Astronomer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --ink: #1f1f1f;
+      --muted: #666;
+      --accent: #3d6b9e;
+      --nav-inactive: #999;
+      --rule: #e5e5e5;
+      --serif: 'Crimson Pro', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+      --max: 860px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards 0.05s;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .site { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    /* ── Header ── */
+    header { text-align: center; padding: 3.5rem 0 2rem; }
+    header h1 {
+      font-family: var(--sans);
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 1.2rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+    }
+
+    nav a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--nav-inactive);
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
+
+    /* ── Pages ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── Home ── */
+    .home-grid {
+      display: grid;
+      grid-template-columns: 1fr 230px;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .home-text p { margin-bottom: 1.2rem; color: #2a2a2a; }
+    .home-text p:last-child { margin-bottom: 0; }
+
+    .home-text .contact-line { margin-top: 1.8rem; font-size: 1rem; }
+
+    .home-text .email-line { margin-top: 0.3rem; }
+    .home-text .email-line a { color: var(--accent); text-decoration: none; }
+    .home-text .email-line a:hover { text-decoration: underline; }
+
+    .photo-placeholder {
+      width: 230px;
+      height: 290px;
+      background: #f2f2f2;
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--nav-inactive);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 300;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ── Section label ── */
+    .section-title {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--nav-inactive);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Research ── */
+    .research-block {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .research-block:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .research-block h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .research-block p { font-size: 1rem; color: #3a3a3a; }
+
+    /* ── Publications ── */
+    .pub-item {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pub-item:last-of-type { border-bottom: none; }
+
+    .pub-title { font-size: 1.05rem; line-height: 1.45; margin-bottom: 0.3rem; }
+    .pub-authors { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .pub-authors strong { color: var(--ink); font-weight: 600; }
+    .pub-journal { font-size: 0.95rem; font-style: italic; color: var(--muted); margin-bottom: 0.5rem; }
+
+    .pub-links a {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+    .pub-links a:hover { text-decoration: underline; }
+
+    /* ── CV ── */
+    .cv-section { margin-bottom: 2.5rem; }
+
+    .cv-section-title {
+      font-family: var(--sans);
+      font-size: 0.73rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--nav-inactive);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.45rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .cv-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .cv-year {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--muted);
+      padding-top: 0.15rem;
+    }
+
+    .cv-role { font-size: 1rem; color: var(--ink); }
+    .cv-place { font-size: 0.95rem; font-style: italic; color: var(--muted); }
+
+    .cv-download { margin-top: 1.5rem; }
+    .cv-download a {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .cv-download a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 4rem;
+      padding: 1.5rem 0 2.5rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--nav-inactive);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .home-grid { grid-template-columns: 1fr; }
+      .photo-placeholder { width: 100%; height: 220px; }
+      nav { gap: 1.5rem; }
+      .cv-row { grid-template-columns: 1fr; gap: 0.05rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="site">
+
+  <header>
+    <h1>Preetish K. Mishra</h1>
+  </header>
+
+  <nav>
+    <a href="#" class="active" onclick="return showPage('home', this)">Home</a>
+    <a href="#" onclick="return showPage('research', this)">Research</a>
+    <a href="#" onclick="return showPage('publications', this)">Publications</a>
+    <a href="#" onclick="return showPage('cv', this)">CV</a>
+  </nav>
+
+  <!-- HOME -->
+  <div class="page active" id="page-home">
+    <div class="home-grid">
+      <div class="home-text">
+        <p>I am a Research Fellow at the Korea Institute for Advanced Study (KIAS), Seoul, Korea.</p>
+        <p>My research lies at the intersection of observational astronomy and galaxy formation theory. I am primarily interested in understanding how galaxies acquire and evolve their fundamental physical properties — mass, structural morphology, and internal kinematics — and how these are shaped by the dark matter halos they inhabit and the large-scale environments around them. I use data from large photometric surveys (Subaru-HSC SSP, Rubin-LSST) and spectroscopic surveys (SDSS, MaNGA, GAMA) to trace these connections. I complement this with cosmological simulations to study the origin of these scaling relations and understand the physical processes that give rise to them.</p>
+        <p class="contact-line">Contact: School of Physics, Korea Institute for Advanced Study, 85 Hoegiro, Dongdaemun-gu, Seoul 02455, Republic of Korea.</p>
+        <p class="email-line">email: <a href="/cdn-cgi/l/email-protection#7202001717061b011a404332191b13015c00175c1900"><span class="__cf_email__" data-cfemail="d8a8aabdbdacb1abb0eae998b3b1b9abf6aabdf6b3aa">[email&#160;protected]</span></a>, <a href="/cdn-cgi/l/email-protection#4232302727362b312a2f2b312a30237b7002252f232b2e6c212d2f"><span class="__cf_email__" data-cfemail="dcacaeb9b9a8b5afb4b1b5afb4aebde5ee9cbbb1bdb5b0f2bfb3b1">[email&#160;protected]</span></a></p>
+      </div>
+      <div>
+        <div class="photo-placeholder">Your photo here<br/><br/>Replace with<br/>&lt;img src="photo.jpg"&gt;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH -->
+  <div class="page" id="page-research">
+    <p class="section-title">Research Interests</p>
+
+    <div class="research-block">
+      <h3>Galaxy Sizes and Dark Matter Halos</h3>
+      <p>Using Subaru Hyper Suprime-Cam (HSC) survey imaging, I measure the structural parameters of low-redshift galaxies and connect them to the properties of their host dark matter halos via weak gravitational lensing and abundance matching. This work sheds light on the physical processes that set galaxy size during and after formation.</p>
+    </div>
+
+    <div class="research-block">
+      <h3>Star Formation in Early-Type Galaxies</h3>
+      <p>Despite being traditionally considered "red and dead," a subset of early-type galaxies shows signatures of residual or rejuvenated star formation. I investigate the origin and drivers of this activity using multi-wavelength photometry and spectroscopic diagnostics, focusing on the role of environment and minor mergers.</p>
+    </div>
+
+    <div class="research-block">
+      <h3>Galaxy Morphology and Visual Structure</h3>
+      <p>Galaxy structure encodes the history of assembly. I apply non-parametric morphological diagnostics to large photometric surveys to quantify how galaxy appearance correlates with stellar mass, environment, and star-formation history at low redshift.</p>
+    </div>
+  </div>
+
+  <!-- PUBLICATIONS -->
+  <div class="page" id="page-publications">
+    <p class="section-title">Publications</p>
+
+    <div class="pub-item">
+      <div class="pub-title">Galaxy Size–Halo Mass Relation from Subaru HSC Weak Lensing at z &lt; 0.3</div>
+      <div class="pub-authors"><strong>Vasquez, E.</strong>, Oguri, M., Miyazaki, S., et al.</div>
+      <div class="pub-journal">The Astrophysical Journal, 2024, 961, 88</div>
+      <div class="pub-links"><a href="#">ADS</a><a href="#">arXiv</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Residual Star Formation in Early-Type Galaxies: Environmental Dependence at 0.05 &lt; z &lt; 0.15</div>
+      <div class="pub-authors"><strong>Vasquez, E.</strong>, Pandey, S. K., Kale, R.</div>
+      <div class="pub-journal">Monthly Notices of the Royal Astronomical Society, 2023, 524, 3102</div>
+      <div class="pub-links"><a href="#">ADS</a><a href="#">arXiv</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Non-Parametric Morphology of Low-Redshift Galaxies in the HSC-SSP Wide Survey</div>
+      <div class="pub-authors"><strong>Vasquez, E.</strong>, Abraham, R. G., van den Bergh, S.</div>
+      <div class="pub-journal">The Astrophysical Journal Supplement Series, 2022, 261, 14</div>
+      <div class="pub-links"><a href="#">ADS</a><a href="#">arXiv</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Stellar Mass–Size Relation of Galaxies in the SDSS: Dependence on Morphology and Environment</div>
+      <div class="pub-authors">Pandey, S. K., <strong>Vasquez, E.</strong>, Kale, R., Dabhade, P.</div>
+      <div class="pub-journal">Astronomy &amp; Astrophysics, 2021, 654, A76</div>
+      <div class="pub-links"><a href="#">ADS</a><a href="#">arXiv</a></div>
+    </div>
+
+    <p style="font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem;">
+      Full list on <a href="#" style="color: var(--accent); text-decoration: none;">NASA ADS</a> &nbsp;·&nbsp; <a href="#" style="color: var(--accent); text-decoration: none;">Google Scholar</a>
+    </p>
+  </div>
+
+  <!-- CV -->
+  <div class="page" id="page-cv">
+    <p class="section-title">Curriculum Vitae</p>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Positions</div>
+      <div class="cv-row">
+        <div class="cv-year">2022 — present</div>
+        <div><div class="cv-role">Post-doctoral Research Fellow</div><div class="cv-place">IUCAA, Pune, India</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2019 — 2022</div>
+        <div><div class="cv-role">Research Associate</div><div class="cv-place">Tata Institute of Fundamental Research, Mumbai</div></div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Education</div>
+      <div class="cv-row">
+        <div class="cv-year">2014 — 2019</div>
+        <div><div class="cv-role">Ph.D. Astronomy</div><div class="cv-place">Savitribai Phule Pune University / IUCAA</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2012 — 2014</div>
+        <div><div class="cv-role">M.Sc. Physics</div><div class="cv-place">University of Delhi</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2009 — 2012</div>
+        <div><div class="cv-role">B.Sc. Physics (Hons.)</div><div class="cv-place">St. Stephen's College, University of Delhi</div></div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Awards &amp; Fellowships</div>
+      <div class="cv-row">
+        <div class="cv-year">2022</div>
+        <div><div class="cv-role">IUCAA Post-doctoral Fellowship</div><div class="cv-place">Inter-University Centre for Astronomy and Astrophysics</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2014</div>
+        <div><div class="cv-role">CSIR-NET Fellowship (JRF)</div><div class="cv-place">Council of Scientific and Industrial Research, India</div></div>
+      </div>
+    </div>
