@@ -24,7 +24,7 @@
       background: var(--bg);
       color: var(--ink);
       font-family: var(--serif);
-      font-size: 19px;
+      font-size: 16.5px;
       line-height: 1.75;
       opacity: 0;
       animation: fadeIn 0.6s ease forwards 0.05s;
@@ -77,37 +77,42 @@
     .page.active { display: block; }
 
     /* ── Home ── */
-    .home-grid {
-      display: grid;
-      grid-template-columns: 1fr 230px;
-      gap: 3.5rem;
-      align-items: start;
+    .home-grid { display: block; overflow: hidden; }
+
+    .home-sidebar {
+      float: right;
+      margin: 0.3rem 0 1.5rem 2.5rem;
+      width: 190px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .home-text p { margin-bottom: 1.2rem; color: #2a2a2a; }
+    .home-sidebar img {
+      width: 190px;
+      display: block;
+      border: 1px solid var(--rule);
+    }
+
+    .home-text p { margin-bottom: 1.1rem; color: #2a2a2a; }
     .home-text p:last-child { margin-bottom: 0; }
 
-    .home-text .contact-line { margin-top: 1.8rem; font-size: 1rem; }
-
-    .home-text .email-line { margin-top: 0.3rem; }
-    .home-text .email-line a { color: var(--accent); text-decoration: none; }
-    .home-text .email-line a:hover { text-decoration: underline; }
-
-    .photo-placeholder {
-      width: 230px;
-      height: 290px;
-      background: #f2f2f2;
-      border: 1px solid var(--rule);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--nav-inactive);
+    .sidebar-contact {
       font-family: var(--sans);
       font-size: 0.78rem;
       font-weight: 300;
-      text-align: center;
-      line-height: 1.8;
+      color: var(--muted);
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
+
+    .sidebar-contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .sidebar-contact a:hover { text-decoration: underline; }
 
     /* ── Section label ── */
     .section-title {
@@ -243,14 +248,20 @@
   <!-- HOME -->
   <div class="page active" id="page-home">
     <div class="home-grid">
+      <div class="home-sidebar">
+        <img src="photo.jpg" alt="Preetish K. Mishra">
+        <div class="sidebar-contact">
+          <p><a href="mailto:preetish21@kias.re.kr">preetish21@kias.re.kr</a></p>
+          <p><a href="mailto:preetishmishra92@gmail.com">preetishmishra92@gmail.com</a></p>
+          <p style="white-space: nowrap;"><a href="https://orcid.org/0009-0009-3772-3134" target="_blank">ORCID: 0009-0009-3772-3134</a></p>
+        </div>
+      </div>
       <div class="home-text">
         <p>I am a Research Fellow at the Korea Institute for Advanced Study (KIAS), Seoul, Korea.</p>
         <p>My research lies at the intersection of observational astronomy and galaxy formation theory. I am primarily interested in understanding how galaxies acquire and evolve their fundamental physical properties — mass, structural morphology, and internal kinematics — and how these are shaped by the dark matter halos they inhabit and the large-scale environments around them. I use data from large photometric surveys (Subaru-HSC SSP, Rubin-LSST) and spectroscopic surveys (SDSS, MaNGA, GAMA) to trace these connections. I complement this with cosmological simulations to study the origin of these scaling relations and understand the physical processes that give rise to them.</p>
-        <p class="contact-line">Contact: School of Physics, Korea Institute for Advanced Study, 85 Hoegiro, Dongdaemun-gu, Seoul 02455, Republic of Korea.</p>
-        <p class="email-line">email: <a href="/cdn-cgi/l/email-protection#7202001717061b011a404332191b13015c00175c1900"><span class="__cf_email__" data-cfemail="d8a8aabdbdacb1abb0eae998b3b1b9abf6aabdf6b3aa">[email&#160;protected]</span></a>, <a href="/cdn-cgi/l/email-protection#4232302727362b312a2f2b312a30237b7002252f232b2e6c212d2f"><span class="__cf_email__" data-cfemail="dcacaeb9b9a8b5afb4b1b5afb4aebde5ee9cbbb1bdb5b0f2bfb3b1">[email&#160;protected]</span></a></p>
-      </div>
-      <div>
-        <img src="photo.jpg" width="230" style="display:block; border: 1px solid #e5e5e5;">
+        <div class="sidebar-contact" style="margin-top: 1.5rem;">
+          <p>School of Physics, Korea Institute for Advanced Study<br>85 Hoegiro, Dongdaemun-gu, Seoul 02455, Republic of Korea</p>
+        </div>
       </div>
     </div>
   </div>
